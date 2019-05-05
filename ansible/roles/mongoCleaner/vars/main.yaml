@@ -1,0 +1,23 @@
+---
+app_dir: mongoCleaner
+service: mongoCleaner
+src_dir: mongoCleaner
+GOPATH: /mnt/c/Users/viktor/Documents/_privat/GO
+bin_file: mongoCleaner
+
+
+
+
+
+
+required:
+  after:
+    - syslog.target
+    - network.target
+    - mongodb.service
+  requires:
+    - spiders.service
+    - mongodb.service
+  # /var/run need spesial write permitions
+  pidfile: /tmp/{{ service }}.pid
+  cmd: "{{ home_dir }}/{{ venv_dir }}/bin/curs_auto"

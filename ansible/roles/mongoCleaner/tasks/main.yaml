@@ -1,0 +1,43 @@
+---
+
+- name: build locally
+  command: "go install"
+  args:
+    chdir: "../{{ src_dir }}"
+  delegate_to: 127.0.0.1
+
+- block:
+  - name: "create app dir ({{ home_dir }}/{{ app_dir }}/bin)"
+    file:
+      path: "{{ home_dir }}/{{ app_dir }}/bin"
+      state: directory
+      mode: 0755
+      owner: "{{ app_user }}"
+      group: "{{ app_user }}"
+
+  - name: copy new file to dst
+    synchronize:
+      src: "{{ GOPATH }}/bin/{{ bin_file }}"
+      dest: "{{ home_dir }}/{{ app_dir }}/bin/"
+  become: yes
+  become_user: "{{ app_user }}"
+  become_method: sudo
+
+# ---------------- configure app ---------------
+- block:
+  - name: generate service config
+    template: src=mongoCleaner.service.j2 dest=/etc/systemd/system/{{ service }}.service
+    when: ansible_service_mgr == "systemd"
+  - name: generate timer config
+    template: src=mongoCleaner.timer.j2 dest=/etc/systemd/system/{{ service }}.timer
+    when: ansible_service_mgr == "systemd"
+  - name: "restart {{ service }}.timer and do 'systemctl daemon-reload'"
+    systemd:
+      state: restarted
+      daemon_reload: yes
+      enabled: yes
+      name: "{{ service }}.timer"
+  become: yes
+  become_method: sudo
+
+

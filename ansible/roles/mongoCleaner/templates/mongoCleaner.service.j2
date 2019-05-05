@@ -1,0 +1,23 @@
+{{ ansible_managed | comment }}
+#/etc/systemd/system/mongoCleaner.service
+[Unit]
+Description=clean mongoDB regularly
+After=syslog.target
+After=network.target
+After=mongodb.service
+Requires=mongodb.service
+
+[Service]
+Type=simple
+WorkingDirectory={{ home_dir }}/{{ app_dir }}/bin
+ExecStart={{ home_dir }}/{{ app_dir }}/bin/{{ bin_file }} --db fin_ua --collection data_active --hours 8
+
+User=curs
+Group=curs
+
+#Environment=RACK_ENV=production
+
+OOMScoreAdjust=-100
+
+[Install]
+WantedBy=multi-user.target
