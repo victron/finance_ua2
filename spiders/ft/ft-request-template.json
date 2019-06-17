@@ -1,0 +1,32 @@
+{
+    "days": 30,
+    "dataNormalized": false,
+    "dataPeriod": "Day",
+    "dataInterval": 1,
+    "endOffsetDays": 0,
+    "exchangeOffset": 0,
+    "realtime": false,
+    "yFormat": "0.###",
+    "timeServiceFormat": "JSON",
+    "rulerIntradayStart": 26,
+    "rulerIntradayStop": 3,
+    "rulerInterdayStart": 10957,
+    "rulerInterdayStop": 365,
+    "returnDateType": "ISO8601",
+    "elements": [
+        {
+            "Label": "e1bb9889",
+            "Type": "price",
+            "Symbol": "27110161",
+            "OverlayIndicators": [],
+            "Params": {}
+        },
+        {
+            "Label": "851949a7",
+            "Type": "volume",
+            "Symbol": "27110161",
+            "OverlayIndicators": [],
+            "Params": {}
+        }
+    ]
+}
