@@ -1,0 +1,23 @@
+{{ ansible_managed | comment }}
+#/etc/systemd/system/ft.service
+[Unit]
+Description=collect data from FT
+After=syslog.target
+After=network.target
+After=mongodb.service
+Requires=mongodb.service
+
+[Service]
+Type=oneshot
+WorkingDirectory={{ home_dir }}/{{ app_dir }}/bin
+ExecStart={{ home_dir }}/{{ app_dir }}/bin/{{ bin_file }} --days 5475 --config ../ft-request-template.json --db fin_ua --collection commodities2 --url "https://markets.ft.com/data/chartapi/series"
+
+User=curs
+Group=curs
+
+#Environment=RACK_ENV=production
+
+OOMScoreAdjust=-100
+
+[Install]
+WantedBy=multi-user.target

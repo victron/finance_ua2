@@ -9,3 +9,6 @@
     - role: mongoCleaner
       tags:
         - mongoCleaner
+    - role: ft
+      tags:
+        - ft

@@ -1,0 +1,7 @@
+---
+app_dir: ft
+service: ft
+src_dir: spiders/ft
+GOPATH: /mnt/c/Users/viktor/Documents/_privat/GO
+bin_file: ft
+
