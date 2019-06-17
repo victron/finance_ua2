@@ -8,7 +8,7 @@ After=mongodb.service
 Requires=mongodb.service
 
 [Service]
-Type=simple
+Type=oneshot
 WorkingDirectory={{ home_dir }}/{{ app_dir }}/bin
 ExecStart={{ home_dir }}/{{ app_dir }}/bin/{{ bin_file }} --db fin_ua --collection data_active --hours 8
 
