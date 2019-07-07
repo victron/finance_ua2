@@ -1,0 +1,7 @@
+---
+app_dir: bi
+service: bi
+src_dir: spiders/bi
+GOPATH: /mnt/c/Users/viktor/Documents/_privat/GO
+bin_file: bi
+

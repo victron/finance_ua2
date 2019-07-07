@@ -12,3 +12,6 @@
     - role: ft
       tags:
         - ft
+    - role: bi
+      tags:
+        - bi
