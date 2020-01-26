@@ -1,7 +1,7 @@
 ---
 
 - name: build locally
-  command: "go install"
+  shell: "GOOS=linux GOARCH=amd64 go install"
   args:
     chdir: "../{{ src_dir }}"
   delegate_to: 127.0.0.1
@@ -17,7 +17,7 @@
 
   - name: copy new file to dst
     synchronize:
-      src: "{{ GOPATH }}/bin/{{ bin_file }}"
+      src: "{{ GOPATH }}/bin/linux_amd64/{{ bin_file }}"
       dest: "{{ home_dir }}/{{ app_dir }}/bin/"
   become: yes
   become_user: "{{ app_user }}"

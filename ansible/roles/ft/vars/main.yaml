@@ -2,6 +2,6 @@
 app_dir: ft
 service: ft
 src_dir: spiders/ft
-GOPATH: /mnt/c/Users/viktor/Documents/_privat/GO
+GOPATH: "{{ lookup('env', 'GOPATH') }}"
 bin_file: ft
 
