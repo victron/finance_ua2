@@ -1,0 +1,10 @@
+---
+- block:
+  - name: "change TZ"
+    timezone:
+      name: Europe/Kiev
+  become: yes
+  become_method: sudo
+
+
+
