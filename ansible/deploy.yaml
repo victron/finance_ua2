@@ -6,6 +6,9 @@
     - vars/main.yml
   roles:
 # or put in meta into dependencies:
+    - role: linux
+      tags:
+        - linux
     - role: mongoCleaner
       tags:
         - mongoCleaner

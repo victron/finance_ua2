@@ -1,20 +1,20 @@
 {{ ansible_managed | comment }}
 #/etc/systemd/system/bi.service
 [Unit]
-Description=collect data from FT
+Description=collect data from BI
 After=syslog.target
 After=network.target
 After=mongodb.service
 Requires=mongodb.service
 
 [Service]
-Type=oneshot
+Type=simple
 WorkingDirectory={{ home_dir }}/{{ app_dir }}/bin
 # for initial data download
-# ExecStart={{ home_dir }}/{{ app_dir }}/bin/{{ bin_file }} --days 5475 --db fin_ua --collection commodities2
+#ExecStart={{ home_dir }}/{{ app_dir }}/bin/{{ bin_file }} --db test --collection commoditiesT
+#ExecStart={{ home_dir }}/{{ app_dir }}/bin/{{ bin_file }} --days 6000 --db fin_ua --collection commodities2
 # for periodic data download, --days == 7, insert done via putting reverse sorted docs
-#ExecStart={{ home_dir }}/{{ app_dir }}/bin/{{ bin_file }} --db fin_ua --collection commodities2
-ExecStart={{ home_dir }}/{{ app_dir }}/bin/{{ bin_file }} --db test --collection commoditiesT
+ExecStart={{ home_dir }}/{{ app_dir }}/bin/{{ bin_file }} --db fin_ua --collection commodities2
 
 User=curs
 Group=curs

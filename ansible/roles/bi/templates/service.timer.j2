@@ -5,10 +5,11 @@
 Description=bi
 
 [Timer]
-OnBootSec=24h
-OnUnitActiveSec=2h
+OnBootSec=2h
+OnUnitActiveSec=27h
 RandomizedDelaySec=300
 Persistent=true
 
 [Install]
-WantedBy=timers.target
+#WantedBy=timers.target
+WantedBy=multi-user.target

@@ -1,0 +1,6 @@
+---
+app_dir: mongoCleaner
+service: mongoCleaner
+src_dir: mongoCleaner
+GOPATH: "{{ lookup('env', 'GOPATH') }}"
+bin_file: mongoCleaner

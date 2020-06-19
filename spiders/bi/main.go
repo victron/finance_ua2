@@ -214,11 +214,12 @@ func CollectData(symbol string) error {
 
 func main() {
 	for symbol, _ := range biSymbols {
+		Info.Println("collecting stat for map symbol:", symbol)
 		err := CollectData(symbol)
 		CheckF(err)
 		sleepTime := time.Duration(rand.Intn(10)) * time.Minute + time.Second * time.Duration(rand.Intn(60))
 		Info.Println("sleep before next request =", sleepTime)
 		time.Sleep(sleepTime)
 	}
-
+	Info.Println("Normal exit...")
 }
